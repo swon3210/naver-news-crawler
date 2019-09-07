@@ -25,7 +25,7 @@ const press = {
 (async () => {
 
   await naver.initialize();
-  await naver.startCrawling(categories.social);
+  await naver.startCrawling(categories.social, 10);
 
 
 })();
