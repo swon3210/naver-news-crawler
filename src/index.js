@@ -25,7 +25,11 @@ const press = {
 (async () => {
 
   await naver.initialize();
-  await naver.startCrawling(categories.social, 10);
 
+  // for (let i in categories) {
+  //   await naver.startCrawling(i, categories[i], 5);
+  // }
+
+  await naver.startCrawling('politics', categories.politics, 5);
 
 })();
