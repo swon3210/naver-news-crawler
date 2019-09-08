@@ -26,10 +26,10 @@ const press = {
 
   await naver.initialize();
 
-  // for (let i in categories) {
-  //   await naver.startCrawling(i, categories[i], 5);
-  // }
+  for (let i in categories) {
+    await naver.startCrawling(i, categories[i], 3);
+  }
 
-  await naver.startCrawling('politics', categories.politics, 5);
+  // await naver.startCrawling('politics', categories.politics, 1);
 
 })();

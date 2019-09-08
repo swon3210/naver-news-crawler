@@ -32,7 +32,7 @@ const naver = {
     }
 
     const result_thumnail_list = [];
-    const result_posts_list = [];
+    const result_post_list = [];
 
     // 섬네일 크롤링
 
@@ -192,7 +192,7 @@ const naver = {
         content_reaction
       };
 
-      result_posts_list.push(obj)
+      result_post_list.push(obj)
     }
 
 
@@ -204,13 +204,13 @@ const naver = {
       await postCrawling(result_thumnail.post_link);
     }
 
-    console.log('posts: ', result_posts_list);
+    console.log('posts: ', result_post_list);
 
     const thumnail_list_json = JSON.stringify(result_thumnail_list);
-    const posts_list_json = JSON.stringify(result_posts_list);
+    const posts_list_json = JSON.stringify(result_post_list);
 
-    fs.writeFileSync('./result/' + name + '-thumnails.json', thumnail_list_json);
-    fs.writeFileSync('./result/' + name + '-posts.json', posts_list_json);
+    fs.writeFileSync('./result/' + name + '-thumnail.json', thumnail_list_json);
+    fs.writeFileSync('./result/' + name + '-post.json', posts_list_json);
 
     const thumnail_fields = [
       'thumnail_img_src',
@@ -228,8 +228,8 @@ const naver = {
       'content_reaction'
     ]
 
-    const thumnail_csv = converter.convert('./result/' + name + '-thumnail.json', thumnail_fields);
-    const post_csv = converter.convert('./result/' + name + '-post.json', posts_fields);
+    const thumnail_csv = converter.convert(result_thumnail_list, thumnail_fields);
+    const post_csv = converter.convert(result_post_list, posts_fields);
     
     fs.writeFileSync('./result/' + name + '-thumnail.csv', thumnail_csv);
     fs.writeFileSync('./result/' + name + '-post.csv', post_csv);
